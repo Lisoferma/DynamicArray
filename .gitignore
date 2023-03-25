@@ -362,3 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /distribution
+/examples/DynamicArrayConsoleExample/README.md
+/examples/DynamicArrayGUIExample/README.md
