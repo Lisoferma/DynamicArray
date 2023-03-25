@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DynamicArray</name>
+    </assembly>
+    <members>
+        <member name="T:DynamicArray.DynamicArray`1">
+            <summary>
+            Вспомогательный тип для избежания перераспределений памяти при построении массивов.
+            </summary>
+            <typeparam name="T">Тип элементов массива.</typeparam>
+        </member>
+        <member name="M:DynamicArray.DynamicArray`1.#ctor">
+            <summary>
+            Инициализирует <see cref="T:DynamicArray.DynamicArray`1"/> пустым массивом и нулевым размером.
+            </summary>
+        </member>
+        <member name="M:DynamicArray.DynamicArray`1.#ctor(System.Int32)">
+            <summary>
+            Инициализирует <see cref="T:DynamicArray.DynamicArray`1"/> с заданным размером.
+            </summary>
+            <param name="size">Размер динамического массива.</param>
+        </member>
+        <member name="M:DynamicArray.DynamicArray`1.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Инициализирует <see cref="T:DynamicArray.DynamicArray`1"/> с заданным размером и ёмкостью.
+            </summary>
+            <param name="size">Размер динамического массива.</param>
+            <param name="capacity">Ёмкость динамического массива.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="P:DynamicArray.DynamicArray`1.Size">
+            <value>
+            Размер динамического массива.
+            </value>
+        </member>
+        <member name="P:DynamicArray.DynamicArray`1.Capacity">
+            <value>
+            Число элементов, которое может содержаться без выделения дополнительного пространства.
+            </value>
+        </member>
+        <member name="P:DynamicArray.DynamicArray`1.Item(System.Int32)">
+            <value>
+            Возвращает или устанавливает элемент по заданному индексу в массиве.
+            </value>
+            <param name="index">Индекс в массиве.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:DynamicArray.DynamicArray`1.Resize(System.Int32)">
+            <summary>
+            Изменяет размер массива до указанного.
+            </summary>
+            <param name="newSize">Новый размер массива</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:DynamicArray.DynamicArray`1.PushBack(`0)">
+            <summary>
+            Добавляет элемент в конец массива.
+            </summary>
+            <param name="value">Значение элемента.</param>
+        </member>
+        <member name="M:DynamicArray.DynamicArray`1.PopBack">
+            <summary>
+            Удаляет последний элемент массива.
+            </summary>
+            <returns>Значение последнего элемента массива.</returns>
+            <exception cref="T:System.IndexOutOfRangeException"></exception>
+        </member>
+        <member name="M:DynamicArray.DynamicArray`1.Insert(System.Int32,`0)">
+            <summary>
+            Вставляет элемент в массив на заданный индекс, сдвигая все остальные элементы на 1, начиная с заданного индекса.
+            </summary>
+            <param name="index">Индекс куда нужно вставить элемент.</param>
+            <param name="item">Значение элемента.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:DynamicArray.DynamicArray`1.GetInternalArray">
+            <summary>
+            Возвращает внутренний массив.
+            </summary>
+            <returns>Внутренний массив.</returns>
+            <example> 
+            Пример, как можно использовать этот метод для работы с классом Array.
+            <code>
+            Array.Sort(myDynamicArray.GetInternalArray(), 0, myDynamicArray.Size);
+            </code>
+            </example>
+        </member>
+        <member name="M:DynamicArray.DynamicArray`1.ToString">
+            <summary>
+            Возвращает размер и ёмкость динамического массива в виде строки.
+            </summary>
+            <returns>Строка с размером и ёмкостью массива.</returns>
+        </member>
+        <member name="M:DynamicArray.DynamicArray`1.GetEnumerator">
+            <summary>
+            Реализует метод интерфейса <see cref="T:System.Collections.IEnumerable"/>.
+            </summary>
+            <returns>Перечислитель <see cref="T:System.Collections.IEnumerator"/>, который используется для прохода по коллекции.</returns>
+        </member>
+        <member name="M:DynamicArray.DynamicArray`1.EnsureCapacity(System.Int32)">
+            <summary>
+            Обеспечивает ёмкость массива относительно заданного размера.
+            </summary>
+            <param name="minimum">Минимальный размер массива, который необходимо обеспечить.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:DynamicArray.DynamicArray`1.Reduce(System.Int32,System.Int32)">
+            <summary>
+            Уменьшить динамическтй массив до заданной ёмкости и размера.
+            </summary>
+            <param name="newCapacity">Новая ёмкость массива.</param>
+            <param name="newSize">Новый размер массива.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="T:DynamicArray.DynamicArrayEnumerator`1">
+            <summary>
+            Реализация интерфейса <see cref="T:System.Collections.IEnumerator"/> для класса <see cref="T:DynamicArray.DynamicArray`1"/>.
+            </summary>
+            <typeparam name="T">Тип элементов массива <see cref="T:DynamicArray.DynamicArray`1"/>.</typeparam>
+        </member>
+        <member name="M:DynamicArray.DynamicArrayEnumerator`1.#ctor(DynamicArray.DynamicArray{`0})">
+            <summary>
+            Инициализирует <see cref="T:DynamicArray.DynamicArrayEnumerator`1"/> для реализации интерфейса <see cref="T:System.Collections.IEnumerator"/>.
+            </summary>
+            <param name="array">Динамический массива по которому будет осуществляться проход итератора.</param>
+        </member>
+        <member name="P:DynamicArray.DynamicArrayEnumerator`1.Current">
+            <value>
+            Возвращает объект в последовательности, на который указывает <see cref="F:DynamicArray.DynamicArrayEnumerator`1._position"/>.
+            </value>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:DynamicArray.DynamicArrayEnumerator`1.System#Collections#IEnumerator#MoveNext">
+            <summary>
+            Перемещает указатель позиции на текущий элемент <see cref="F:DynamicArray.DynamicArrayEnumerator`1._position"/> на следующую позицию в последовательности.
+            </summary>
+            <returns>true если последовательность не закончилась, иначе false.</returns>
+        </member>
+        <member name="M:DynamicArray.DynamicArrayEnumerator`1.System#Collections#IEnumerator#Reset">
+            <summary>
+            Cбрасывает указатель позиции <see cref="F:DynamicArray.DynamicArrayEnumerator`1._position"/> в начальное положение.
+            </summary>
+        </member>
+    </members>
+</doc>
