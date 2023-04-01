@@ -6,6 +6,7 @@ namespace DynamicArray;
 
 /// <summary>
 /// Вспомогательный тип для избежания перераспределений памяти при построении массивов.
+/// Реализует интерфейс <see cref="IEnumerable"/> для перебора элементов.
 /// </summary>
 /// <typeparam name="T">Тип элементов массива.</typeparam>
 public class DynamicArray<T> : IEnumerable
@@ -236,20 +237,20 @@ public class DynamicArray<T> : IEnumerable
         {
             Array.Resize(ref _items, minimum * _increaseFactor);
         }
-        else if (minimum < Capacity / _reductionFactor)
+        else if (minimum < Capacity / _reductionFactor)  // Если требуемая ёмкость меньше текущей в _reductionFactor раз.
         {
             Reduce(minimum, minimum * _increaseFactor);
-        }
-        else if (minimum < Size)
+        }   
+        else if (minimum < Size)                         // Если перераспределение памяти не нужно.
         {
             // Установить значение default неиспользуемым ячейкам внутреннего массива.
-            Array.Fill(_items, default, minimum, Capacity - minimum);
+            Array.Fill(_items, default, minimum, Capacity - minimum);  
         }
     }
 
 
     /// <summary>
-    /// Уменьшить динамическтй массив до заданной ёмкости и размера.
+    /// Уменьшает динамическтй массив до заданной ёмкости и размера.
     /// </summary>
     /// <param name="newCapacity">Новая ёмкость массива.</param>
     /// <param name="newSize">Новый размер массива.</param>
