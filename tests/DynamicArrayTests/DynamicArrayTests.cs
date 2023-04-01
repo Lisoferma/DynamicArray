@@ -78,14 +78,54 @@ public class DynamicArrayTests
 
 
     [TestMethod]
-    public void PushBack_AddElement_AddedElementIsSameAsLastInArray()
+    public void PushBack_Call100Times_AddedElementsSameAsInResultingArray()
     {
-        double element = 99.99;
-        DynamicArray<double> array = new(5);
+        int additions = 100;
+        DynamicArray<int> array = new();
 
-        array.PushBack(element);
+        for (int i = 0; i < additions; i++)
+            array.PushBack(i);
 
-        double actualLastElement = array[array.Size - 1];
-        Assert.AreEqual(element, actualLastElement, "Добавленный элемент не совпадает с последним в массиве");
+        for (int i = 0; i < additions; i++)
+            Assert.AreEqual(i, array[i], "Значения элементов массива не совпадают с добавленными");
+    }
+
+
+    [TestMethod]
+    public void PopBack_Call100Times_ReturnedElementsAreSameAsTheyWereInArray()
+    {
+        int calls = 100;
+        DynamicArray<int> array = new(calls);
+
+        for (int i = 0; i < calls; i++)
+            array[i] = i;
+
+        for (int i = calls - 1; i > 0; i--)
+        {
+            int expectedElement = array[i];
+            int actualElement = array.PopBack();
+
+            Assert.AreEqual(expectedElement, actualElement, "Возвращённый элемент из метода PopBack, не совпадает с тем который был в массиве");
+        }
+    }
+
+
+    [TestMethod]
+    public void Insert_Call100Times_AddedElementsSameAsInResultingArray()
+    {
+        int calls = 100;
+        int insertIndex = 10;
+        DynamicArray<int> array = new(20);
+
+        for (int i = calls - 1; i >= 0; i--)
+            array.Insert(insertIndex, i);
+
+        for (int i = 0; i < calls; i++)
+        {
+            int expectedElement = i;
+            int actualElement = array[insertIndex + i];
+
+            Assert.AreEqual(expectedElement, actualElement, "Вставленный элемент не совпадают с фактическим элементом массива");
+        }     
     }
 }
