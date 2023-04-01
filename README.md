@@ -1,2 +1,1 @@
-![DynamicArray (1)](https://user-images.githubusercontent.com/115818156/227703055-c5373039-be38-4dc5-b447-a8f2e23ee8a4.png)
-
+![DynamicArray](https://user-images.githubusercontent.com/115818156/229279015-3fb957f9-4999-41dd-a5f4-7825f6684289.png)
