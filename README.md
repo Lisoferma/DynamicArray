@@ -1,1 +1,1 @@
-![DynamicArray](https://user-images.githubusercontent.com/115818156/235494645-2009e622-6536-4e02-a517-24620fede53d.png)
+![DynamicArray (1)](https://github.com/Lisoferma/DynamicArray/assets/115818156/cd3e4ff6-ddcf-4cc7-a003-0b13acd16576)
